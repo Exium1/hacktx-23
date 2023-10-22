@@ -138,7 +138,7 @@ function Worker() {
 						<Tooltip cursor={{ strokeDasharray: "3 3" }} />
 						<Legend />
 						<Scatter
-							name="A school"
+							name="Energy"
 							data={data01}
 							fill="#8884d8"
 							line
