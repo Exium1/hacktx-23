@@ -166,7 +166,7 @@ function WorkerTable() {
                 <h1>Live Worker Data</h1>
                 <div>
                     <input type="text" placeholder="Search" />
-                    <button>Filter</button>
+                    <button>Filter<img src="./filter.svg"/></button>
                 </div>
             </div>
 			<table>
