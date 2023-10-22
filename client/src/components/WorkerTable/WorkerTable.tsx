@@ -180,7 +180,7 @@ function WorkerTable() {
 					))}
 				</tbody>
 			</table>
-			<button onClick={() => update()}>Rerender</button>
+			{/* <button onClick={() => update()}>Rerender</button> */}
 		</div>
 	);
 }
