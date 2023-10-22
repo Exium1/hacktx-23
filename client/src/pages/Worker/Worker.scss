@@ -1,10 +1,11 @@
 .worker-section {
     margin-top: 50px;
 
-    .worker-info {
+    .worker-content {
         display: flex;
         flex-direction: row;
         gap: 30px;
+        margin-bottom: 50px;
 
         img {
             height: 150px;
@@ -12,6 +13,18 @@
             border-radius: 10px;
         }
 
+        h1 {
+            font-size: 32px;
+        }
+
+        .worker-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+
+    .worker-chart {
         h1 {
             font-size: 32px;
         }
