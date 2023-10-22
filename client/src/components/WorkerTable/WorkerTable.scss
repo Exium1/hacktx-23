@@ -1,8 +1,31 @@
 .worker-table {
     width: 100%;
+    margin-top: 30px;
 
-    h1 {
-        font-size: 28px;
+    .worker-table-header {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+
+        h1 {
+            font-size: 28px;
+        }
+
+        > div {
+            display: flex;
+            gap: 10px;
+            margin-left: auto;
+
+            > * {
+                background-color: #E7EBE3;
+                border: 2px solid #CCCCCC;
+                padding: 10px;
+                border-radius: 10px;
+                font-size: 14px;
+                color: #929292;
+
+            }
+        }
     }
     
     table {

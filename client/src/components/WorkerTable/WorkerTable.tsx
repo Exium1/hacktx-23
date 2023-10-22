@@ -6,6 +6,8 @@ import {
 	getCoreRowModel,
 	useReactTable
 } from "@tanstack/react-table";
+import EnergyBar from "../EnergyBar/EnergyBar";
+import FatigueArrow from "../FatigueArrow/FatigueArrow";
 
 type Worker = {
 	name: string;
@@ -28,7 +30,7 @@ const testData: Worker[] = [
 		title: "Electrician",
 		site: "Union on 24th",
 		siteDetails: "Austin, TX",
-		energy: 76,
+		energy: 100,
 		fatigueRate: 42,
 		timeRemaining: 90,
 		shiftLength: 8
@@ -40,7 +42,7 @@ const testData: Worker[] = [
 		title: "Electrician",
 		site: "Union on 24th",
 		siteDetails: "Austin, TX",
-		energy: 13,
+		energy: 75,
 		fatigueRate: 88,
 		timeRemaining: 90,
 		shiftLength: 8
@@ -52,7 +54,7 @@ const testData: Worker[] = [
 		title: "Plumber",
 		site: "Union on 24th",
 		siteDetails: "Austin, TX",
-		energy: 63,
+		energy: 50,
 		fatigueRate: -12,
 		timeRemaining: 90,
 		shiftLength: 8
@@ -64,8 +66,20 @@ const testData: Worker[] = [
 		title: "Equipment Operator",
 		site: "Union on 24th",
 		siteDetails: "Austin, TX",
-		energy: 86,
-		fatigueRate: -32,
+		energy: 25,
+		fatigueRate: 12,
+		timeRemaining: 90,
+		shiftLength: 8
+	},
+	{
+		name: "Janis Joplin",
+		profilePic: "./empty-profile-green.png",
+		id: "9208-7358",
+		title: "Equipment Operator",
+		site: "Union on 24th",
+		siteDetails: "Austin, TX",
+		energy: 10,
+		fatigueRate: 38,
 		timeRemaining: 90,
 		shiftLength: 8
 	}
@@ -101,20 +115,39 @@ const columns = [
 	}),
 	columnHelper.accessor("energy", {
 		header: "Energy",
-		cell: (info) => <p>{info.getValue()}%</p>
+		cell: (info) => (
+			<>
+				<p>{info.getValue()}%</p>
+				<EnergyBar energy={info.getValue()} />
+			</>
+		)
 	}),
 	columnHelper.accessor("fatigueRate", {
 		header: "Fatigue Rate",
-		cell: (info) => <p>{info.getValue()}%</p>
+		cell: (info) => (
+			<div className="flex flex-row items-center gap-2">
+				<p>{info.getValue()}%</p>
+				<FatigueArrow fatigueRate={info.getValue()} />
+			</div>
+		)
 	}),
 	columnHelper.accessor("timeRemaining", {
 		header: "Time Remaining",
-		cell: (info) => (
-			<>
-				<p>{info.getValue()}</p>
-				<p className="cell-desc">{info.row.original.shiftLength}</p>
-			</>
-		)
+		cell: (info) => {
+			const mins = info.getValue();
+
+			return (
+				<>
+					<p>
+						{Math.floor(mins / 60)}:
+						{mins % 60 < 10 ? `0${mins % 60}` : mins % 60}
+					</p>
+					<p className="cell-desc">
+						{info.row.original.shiftLength} hr shift
+					</p>
+				</>
+			);
+		}
 	})
 ];
 
@@ -129,41 +162,45 @@ function WorkerTable() {
 
 	return (
 		<div className="worker-table">
-			<div className="p-2">
-				<table>
-					<thead>
-						{table.getHeaderGroups().map((headerGroup) => (
-							<tr key={headerGroup.id}>
-								{headerGroup.headers.map((header) => (
-									<th key={header.id}>
-										{header.isPlaceholder
-											? null
-											: flexRender(
-													header.column.columnDef
-														.header,
-													header.getContext()
-											  )}
-									</th>
-								))}
-							</tr>
-						))}
-					</thead>
-					<tbody>
-						{table.getRowModel().rows.map((row) => (
-							<tr key={row.id}>
-								{row.getVisibleCells().map((cell) => (
-									<td key={cell.id}>
-										{flexRender(
-											cell.column.columnDef.cell,
-											cell.getContext()
+            <div className="worker-table-header">
+                <h1>Live Worker Data</h1>
+                <div>
+                    <input type="text" placeholder="Search" />
+                    <button>Filter</button>
+                </div>
+            </div>
+			<table>
+				<thead>
+					{table.getHeaderGroups().map((headerGroup) => (
+						<tr key={headerGroup.id}>
+							{headerGroup.headers.map((header) => (
+								<th key={header.id}>
+									{header.isPlaceholder
+										? null
+										: flexRender(
+												header.column.columnDef.header,
+												header.getContext()
 										)}
-									</td>
-								))}
-							</tr>
-						))}
-					</tbody>
-				</table>
-			</div>
+								</th>
+							))}
+						</tr>
+					))}
+				</thead>
+				<tbody>
+					{table.getRowModel().rows.map((row) => (
+						<tr key={row.id}>
+							{row.getVisibleCells().map((cell) => (
+								<td key={cell.id}>
+									{flexRender(
+										cell.column.columnDef.cell,
+										cell.getContext()
+									)}
+								</td>
+							))}
+						</tr>
+					))}
+				</tbody>
+			</table>
 		</div>
 	);
 }

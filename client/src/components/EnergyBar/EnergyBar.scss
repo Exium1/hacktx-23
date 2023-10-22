@@ -1,0 +1,19 @@
+.energy-bar-wrapper {
+    position: relative;
+
+    .energy-bar {
+        height: 10px;
+        width: 100px;
+        background-color: #D9D9D9;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+
+        .energy-bar-fill {
+            height: 6px;
+            border-radius: 3px;
+            margin-left: 2px;
+        }
+    }
+}
