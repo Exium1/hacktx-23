@@ -1,0 +1,19 @@
+.worker-section {
+    margin-top: 50px;
+
+    .worker-info {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+
+        img {
+            height: 150px;
+            width: 150px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+    }
+}

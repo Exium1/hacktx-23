@@ -22,7 +22,7 @@ function ProjectCard({
 				<div className="project-footer">
 					<p>{date}</p>
 					<div className="project-buttons">
-						<a href={`/projects/${id}/edit`}><img src="./edit.svg" alt=""/></a>
+						<a href={`/projects/${id}/edit`}><img src="/edit.svg" alt=""/></a>
 						<a href={`/projects/${id}`}>Visit</a>
 					</div>
 				</div>

@@ -8,11 +8,11 @@ const Navbar: React.FC<NavbarProps> = () => {
 		<div className="nav-wrapper">
 			<nav className="nav container">
                 <div className="nav-logo">
-                    <a href="#">Company Name</a>
+                    <a href="/">InSite</a>
                 </div>
                 <div className="nav-list">
-                    <a href="#">Home</a>
-                    <a href="#">Projects</a>
+                    <a href="/">Home</a>
+                    <a href="/">Projects</a>
                 </div>
 			</nav>
 		</div>
