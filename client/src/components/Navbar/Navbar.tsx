@@ -12,7 +12,6 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </div>
                 <div className="nav-list">
                     <a href="#">Home</a>
-                    <a href="#">Teams</a>
                     <a href="#">Projects</a>
                 </div>
 			</nav>

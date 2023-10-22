@@ -1,0 +1,36 @@
+.overview-section {
+    margin-top: 50px;
+
+    h1 {
+        font-size: 28px;
+    }
+    
+    .overview-charts-container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .overview-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+
+            h2 {
+                font-size: 22px;
+            }
+
+            > div {
+                display: flex;
+                flex-direction: column;
+                
+                text-align: center;
+                
+                p {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}

@@ -79,7 +79,7 @@ const testData: Worker[] = [
 		site: "Union on 24th",
 		siteDetails: "Austin, TX",
 		energy: 10,
-		fatigueRate: 38,
+		fatigueRate: -78,
 		timeRemaining: 90,
 		shiftLength: 8
 	}
@@ -125,7 +125,7 @@ const columns = [
 	columnHelper.accessor("fatigueRate", {
 		header: "Fatigue Rate",
 		cell: (info) => (
-			<div className="flex flex-row items-center gap-2">
+			<div className="flex flex-row items-center justify-between max-w-[70px]">
 				<p>{info.getValue()}%</p>
 				<FatigueArrow fatigueRate={info.getValue()} />
 			</div>
