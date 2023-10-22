@@ -49,7 +49,7 @@ async function getWorkers() {
 	return res;
 }
 
-async function getEnergy(employee: any) {
+async function getEnergy(employeeID: any) {
     console.log("getEnergy");
 
     const res = await signInWithEmailAndPassword(
@@ -60,6 +60,7 @@ async function getEnergy(employee: any) {
 		.then(async (userCredential) => {
         
             const energyCollection = collection(db, "energy");
+
             const q = query(energyCollection, where("employee", "==", employee));
             const energies = await getDocs(q);
             const res = [];

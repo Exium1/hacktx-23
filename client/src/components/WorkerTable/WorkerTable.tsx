@@ -109,7 +109,7 @@ function WorkerTable() {
 		getWorkers().then((res: any) => {
 			console.log("recieved data!");
 
-			res.forEach(async (worker : any) => (worker.energy = await getEnergy(worker)));
+			res.forEach(async (worker : any) => (worker.energy = await getEnergy(worker.id)));
 
 			console.log(res);
 			setData(res);
