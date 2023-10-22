@@ -60,7 +60,6 @@ async function getEnergy(employeeID: any) {
 		.then(async (userCredential) => {
         
             const energyCollection = collection(db, "energy");
-
             const q = query(energyCollection, where("employee", "==", employee));
             const energies = await getDocs(q);
             const res = [];

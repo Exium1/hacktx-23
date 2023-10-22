@@ -105,25 +105,14 @@ function WorkerTable() {
 	});
 
 	useEffect(() => {
-		console.log("useEffect");
 		getWorkers().then((res: any) => {
-			console.log("recieved data!");
 
-			res.forEach(async (worker : any) => (worker.energy = await getEnergy(worker.id)));
-
-			console.log(res);
 			setData(res);
 		});
 	}, []);
 
 	const update = () => {
-		console.log("update");
 		getWorkers().then((res) => {
-			console.log("recieved data!");
-
-			res.forEach((worker) => (worker.energy = getEnergy(worker.id)));
-
-			console.log(res);
 			setData(res);
 			rerender();
 		});
